@@ -74,11 +74,11 @@ dim(CleanedData)
 
 CleanedData2<-data.table(CleanedData)
 names(CleanedData2)
-TidyData <- CleanedData2[, lapply(.SD, mean), by = 'SubjectID,Activity'] ## features average by Subject and by activity
-dim(TidyData)
-head(TidyData[,1:4])
+TidyData0 <- CleanedData2[, lapply(.SD, mean), by = 'SubjectID,Activity'] ## features average by Subject and by activity
+dim(TidyData0)
+head(TidyData0[,1:4])
 
-TidyData <- TidyData[order(SubjectID,Activity),]  ##Sort data by variable and by subject	
+TidyData <- TidyData0[order(SubjectID,Activity),]  ##Sort data by variable and by subject	
 write.table(TidyData, file = "Tidy.txt", row.names = FALSE)  ## Download the data in txt
 
 
